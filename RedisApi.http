@@ -5,7 +5,7 @@ POST {{host}}/api/platforms
 Content-Type: application/json
 
 {
-	"name": "Docker"
+	"name": "Exchange"
 }
 
 ### Get a platform by ID (GET)

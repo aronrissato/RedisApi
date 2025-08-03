@@ -23,6 +23,8 @@ public class RedisPlatformRepo : IPlatformRepo
         var db = _redis.GetDatabase();
         var serialPlatform = JsonSerializer.Serialize(platform);
         db.StringSet(platform.Id, serialPlatform);
+        
+        db.SetAdd("PlatformSet", serialPlatform);
     }
 
     public IEnumerable<Platform> GetAll()
