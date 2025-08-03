@@ -1,3 +1,4 @@
+using RedisApi.Data;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,8 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(opt =>
     ConnectionMultiplexer.Connect(
         builder.Configuration.GetConnectionString("Redis")
     ));
+
+builder.Services.AddScoped<IPlatformRepo, RedisPlatformRepo>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
