@@ -16,10 +16,13 @@ public class PlatformsController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Create(Platform platform)
+    public ActionResult<Platform> Create(Platform platform)
     {
         _repo.Create(platform);
-        return Ok();
+        return CreatedAtRoute(
+            nameof(Get),
+            new { id = platform.Id },
+            platform);
     }
 
     [HttpGet("{id}", Name = "GetPlatformById")]

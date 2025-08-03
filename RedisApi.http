@@ -1,0 +1,16 @@
+﻿@host=https://localhost:7164
+
+### Create a new platform (POST)
+POST {{host}}/api/platforms
+Content-Type: application/json
+
+{
+	"id": "10010",
+	"name": "Docker"
+}
+
+### Get a platform by ID (GET)
+GET {{host}}/api/platforms/10010
+
+### Get all platforms (GET)
+GET {{host}}/api/platforms
