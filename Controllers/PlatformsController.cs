@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RedisApi.Data;
 using RedisApi.Model;
 
@@ -6,6 +7,7 @@ namespace RedisApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[AllowAnonymous]
 public class PlatformsController : ControllerBase
 {
     private readonly IPlatformRepo _repo;
@@ -20,7 +22,7 @@ public class PlatformsController : ControllerBase
     {
         _repo.Create(platform);
         return CreatedAtRoute(
-            nameof(Get),
+            "GetPlatformById",
             new { id = platform.Id },
             platform);
     }

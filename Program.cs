@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(opt =>
     ConnectionMultiplexer.Connect(
-        builder.Configuration.GetConnectionString("Redis")
+        builder.Configuration.GetConnectionString("RedisConnection")
     ));
 
 builder.Services.AddScoped<IPlatformRepo, RedisPlatformRepo>();

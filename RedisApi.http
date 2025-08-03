@@ -5,7 +5,6 @@ POST {{host}}/api/platforms
 Content-Type: application/json
 
 {
-	"id": "10010",
 	"name": "Docker"
 }
 

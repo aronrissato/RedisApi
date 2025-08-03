@@ -39,3 +39,4 @@ Decorate with [ApiController]
 Decorate with [Route]
 Creating endpoint in according with the contract (interface)
 Decorating Get endpoint and naming it as GetPlatformById
+Using this name in Create endpoint with CreateAtRoute(nameof,id,plat)
