@@ -13,3 +13,6 @@ GET {{host}}/api/platforms/10010
 
 ### Get all platforms (GET)
 GET {{host}}/api/platforms
+
+### Get returned platform (GET)
+GET {{host}}/api/Platforms/platform:8a60c208-edf3-4f5d-baf1-081e94a0c6d8
