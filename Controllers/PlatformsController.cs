@@ -27,6 +27,11 @@ public class PlatformsController : ControllerBase
             platform);
     }
 
+    [HttpGet]
+    public ActionResult<IEnumerable<Platform>> GetAll() =>
+        Ok(_repo.GetAll());
+
+
     [HttpGet("{id}", Name = "GetPlatformById")]
     public ActionResult<Platform> Get(string id)
     {
@@ -37,8 +42,4 @@ public class PlatformsController : ControllerBase
             ? NotFound()
             : Ok(platform);
     }
-
-    [HttpGet]
-    public ActionResult<Platform> GetById() =>
-        Ok(_repo.GetAll());
 }

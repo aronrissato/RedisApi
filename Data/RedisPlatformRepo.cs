@@ -23,13 +23,21 @@ public class RedisPlatformRepo : IPlatformRepo
         var db = _redis.GetDatabase();
         var serialPlatform = JsonSerializer.Serialize(platform);
         db.StringSet(platform.Id, serialPlatform);
-        
+
         db.SetAdd("PlatformSet", serialPlatform);
     }
 
-    public IEnumerable<Platform> GetAll()
+    public IEnumerable<Platform?>? GetAll()
     {
-        throw new NotImplementedException();
+        var db = _redis.GetDatabase();
+        var completeSet = db.SetMembers("PlatformSet");
+        
+        if (completeSet.Length <= 0) return null;
+        
+        var obj = Array.ConvertAll(
+            completeSet, value
+                => JsonSerializer.Deserialize<Platform>(value)).ToList();
+        return obj;
     }
 
     public Platform? Get(string id)
