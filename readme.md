@@ -1,5 +1,3 @@
-![Redis_Insight](Redis_Insight.png)
-
 
 docker compose start
 docker compose stop
@@ -57,3 +55,5 @@ Using new 'Set's
 Showing that is not the best approach to use 'Set's and instead of it you have 'Hash's
 
 
+![Redis_Insight](Redis_Insight.png)
+![Docker](Docker.png)
