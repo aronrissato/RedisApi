@@ -1,3 +1,6 @@
+![Redis_Insight](Redis_Insight.png)
+
+
 docker compose start
 docker compose stop
 
@@ -28,7 +31,7 @@ implement interface
 inject IConnectionMultiplexer (redis lib) in repository
 creating methods logic
 settings signature from method to expects null from the type
-if dont find thats it
+if don't find that's it
 to create use serialize with JsonSerializer.Serialize(...)
 and use .StringSet
 to get use JsonSerializer.Deserialize<Platform>(...);
@@ -37,7 +40,7 @@ adding PlatformsController
 injecting ControllerBase
 Decorate with [ApiController]
 Decorate with [Route]
-Creating endpoint in according with the contract (interface)
+Creating endpoint in according to the contract (interface)
 Decorating Get endpoint and naming it as GetPlatformById
 Using this name in Create endpoint with CreateAtRoute(nameof,id,plat)
 Sending request to Create and using the location from header to see it created
@@ -48,9 +51,9 @@ docker exec -it {id from ps} /bin/bash
 redis-cli
 scan 0
 
-Creating new rote to get all info from Redis
+Creating a new route to get all info from Redis
 Using new 'Set's 
 
+Showing that is not the best approach to use 'Set's and instead of it you have 'Hash's
 
 
-![Redis_Insight](Redis_Insight.png)
