@@ -48,3 +48,9 @@ docker exec -it {id from ps} /bin/bash
 redis-cli
 scan 0
 
+Creating new rote to get all info from Redis
+Using new 'Set's 
+
+
+
+![Redis_Insight](Redis_Insight.png)

@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Runtime.InteropServices.ComTypes;
+using System.Text.Json;
 using RedisApi.Model;
 using StackExchange.Redis;
 
@@ -22,31 +23,38 @@ public class RedisPlatformRepo : IPlatformRepo
 
         var db = _redis.GetDatabase();
         var serialPlatform = JsonSerializer.Serialize(platform);
-        db.StringSet(platform.Id, serialPlatform);
-
-        db.SetAdd("PlatformSet", serialPlatform);
+        // db.StringSet(platform.Id, serialPlatform);
+        // db.SetAdd("PlatformSet", serialPlatform);
+        
+        db.HashSet("hashplatform", new HashEntry[]
+        {new HashEntry(platform.Id, serialPlatform)});
     }
 
     public IEnumerable<Platform?>? GetAll()
     {
         var db = _redis.GetDatabase();
-        var completeSet = db.SetMembers("PlatformSet");
+        // var completeSet = db.SetMembers("PlatformSet");
         
-        if (completeSet.Length <= 0) return null;
+        var completeHash = db.HashGetAll("hashplatform");
+        
+        if (completeHash.Length <= 0) return null;
         
         var obj = Array.ConvertAll(
-            completeSet, value
-                => JsonSerializer.Deserialize<Platform>(value)).ToList();
+            completeHash, value
+                => JsonSerializer.Deserialize<Platform>(value.Value)).ToList();
         return obj;
     }
 
     public Platform? Get(string id)
     {
         var db = _redis.GetDatabase();
-        var platform = db.StringGet(id);
 
+        // var platform = db.StringGet(id);
+
+        var platform = db.HashGet("hashplatform", id);
+        
         return !string.IsNullOrEmpty(platform)
             ? JsonSerializer.Deserialize<Platform>(platform)
-            : null!;
+            : null;
     }
 }

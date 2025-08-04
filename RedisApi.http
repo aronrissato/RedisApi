@@ -5,7 +5,7 @@ POST {{host}}/api/platforms
 Content-Type: application/json
 
 {
-	"name": "Chrome"
+	"name": "Docker"
 }
 
 ### Get a platform by ID (GET)
@@ -15,4 +15,4 @@ GET {{host}}/api/platforms/10010
 GET {{host}}/api/platforms
 
 ### Get returned platform (GET)
-GET {{host}}/api/Platforms/platform:8a60c208-edf3-4f5d-baf1-081e94a0c6d8
+GET {{host}}/api/Platforms/platform%3A45ca67d1-666e-4e12-9abf-905fc8d330bc
